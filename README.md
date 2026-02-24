@@ -8,5 +8,5 @@ Discord-Bot for RObotik Discord server to maintain, handle and controll Robotik 
 
 - verwalten und zusammenfassend anzeigen von github issues.
 
-!Systemübersicht
+![Architekturdiagramm](docs/arch.svg)
 
