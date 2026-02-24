@@ -17,12 +17,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0   # Fix für "shallow git repository"
-
+          
+      - name: Debug list files
+        run: ls -R
      
       - name: Export draw.io to SVG
         uses: rlespinasse/drawio-export-action@v2
         with:
-          path: 'diagrams/*.drawio'  # <— ein einziger String!
+          path: 'diagrams'  # <— ein einziger String!
           output: docs
           format: svg
           remove-page-suffix: true
