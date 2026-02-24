@@ -7,27 +7,31 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # nötig, um generierte Dateien zurück zu committen
+  contents: write
 
 jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout (full history)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Fix für "shallow git repository"
 
-      # Exportiert alle .drawio aus den angegebenen Ordnern nach docs/ (SVG + PNG)
       - name: Export draw.io to SVG & PNG
         uses: rlespinasse/drawio-export-action@v2
         with:
-          source: |
-            diagrams
-            docs
+          # Nutze 'path' statt 'source' (Globs sind erlaubt)
+          path: |
+            diagrams/**/*.drawio
+            docs/**/*.drawio
           output: docs
           format: svg png
-          png-scale: 1.5            # <— richtige Einrückung (2 Leerzeichen)
-          embed-diagram: true       # PNGs wieder in draw.io editierbar
-          remove-page-suffix: true  # entfernt -page1 etc. im Dateinamen
+          scale: 1.5               # statt 'png-scale'
+          embed-diagram: true      # PNG editierbar in draw.io
+          remove-page-suffix: true # entfernt -page1 etc.
+          # optional:
+          # all-pages: true        # alle Seiten exportieren
 
       - name: Commit and push exported files
         run: |
