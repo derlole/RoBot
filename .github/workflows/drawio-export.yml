@@ -22,7 +22,7 @@ jobs:
       - name: Export draw.io to SVG
         uses: rlespinasse/drawio-export-action@v2
         with:
-          path: '{diagrams,docs}/**/*.drawio'  # <— ein einziger String!
+          path: 'diagrams/**/*.drawio'  # <— ein einziger String!
           output: docs
           format: svg
           remove-page-suffix: true
