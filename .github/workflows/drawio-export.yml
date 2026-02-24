@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write  # nötig, um generierte Dateien zurück zu committen
 
 jobs:
   export:
@@ -16,6 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Exportiert alle .drawio aus den angegebenen Ordnern nach docs/ (SVG + PNG)
       - name: Export draw.io to SVG & PNG
         uses: rlespinasse/drawio-export-action@v2
         with:
@@ -24,9 +25,9 @@ jobs:
             docs
           output: docs
           format: svg png
-           png-scale: 1.5
-          embed-diagram: true
-          remove-page-suffix: true
+          png-scale: 1.5            # <— richtige Einrückung (2 Leerzeichen)
+          embed-diagram: true       # PNGs wieder in draw.io editierbar
+          remove-page-suffix: true  # entfernt -page1 etc. im Dateinamen
 
       - name: Commit and push exported files
         run: |
