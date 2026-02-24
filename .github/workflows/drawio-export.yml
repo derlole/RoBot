@@ -26,7 +26,7 @@ jobs:
             diagrams/**/*.drawio
             docs/**/*.drawio
           output: docs
-          format: svg png
+          format: svg
           scale: 1.5               # statt 'png-scale'
           embed-diagram: true      # PNG editierbar in draw.io
           remove-page-suffix: true # entfernt -page1 etc.
