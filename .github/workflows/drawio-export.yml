@@ -18,20 +18,15 @@ jobs:
         with:
           fetch-depth: 0   # Fix für "shallow git repository"
 
-      - name: Export draw.io to SVG & PNG
+     
+      - name: Export draw.io to SVG
         uses: rlespinasse/drawio-export-action@v2
         with:
-          # Nutze 'path' statt 'source' (Globs sind erlaubt)
-          path: |
-            diagrams/**/*.drawio
-            docs/**/*.drawio
+          path: '{diagrams,docs}/**/*.drawio'  # <— ein einziger String!
           output: docs
           format: svg
-          scale: 1.5               # statt 'png-scale'
-          embed-diagram: true      # PNG editierbar in draw.io
-          remove-page-suffix: true # entfernt -page1 etc.
-          # optional:
-          # all-pages: true        # alle Seiten exportieren
+          remove-page-suffix: true
+
 
       - name: Commit and push exported files
         run: |
