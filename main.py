@@ -14,14 +14,14 @@ class MyBot(commands.Bot):
             intents=intents
         )
 
-async def setup_hook(self):
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py") and not filename.startswith("_"):
-            await self.load_extension(f"cogs.{filename[:-3]}")
+    async def setup_hook(self):
+        for filename in os.listdir("./cogs"):
+            if filename.endswith(".py") and not filename.startswith("_"):
+                await self.load_extension(f"cogs.{filename[:-3]}")
 
-    print("Cogs geladen!")
+        print("Cogs geladen!")
 
-    await self.tree.sync()
+        await self.tree.sync()
 bot = MyBot()
 
 @bot.event

@@ -35,6 +35,14 @@ class ChannelUserManager(commands.Cog):
             )
             return
 
+        # Prüfe, ob der Bot die Rolle vergeben kann
+        if role >= interaction.guild.me.top_role:
+            await interaction.response.send_message(
+                f"Ich kann diese Rolle nicht vergeben, da sie höher oder gleich meiner höchsten Rolle ist.",
+                ephemeral=True
+            )
+            return
+
         await member.add_roles(role, reason=f"Zugriff auf privaten Channel {channel.name}")
 
         await interaction.response.send_message(
