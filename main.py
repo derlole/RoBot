@@ -29,4 +29,5 @@ bot = MyBot()
 async def on_ready():
     print(f"Eingeloggt als {bot.user}")
 
+
 bot.run(TOKEN)
