@@ -25,6 +25,7 @@ class MyBot(commands.Bot):
         await self.tree.sync()
 bot = MyBot()
 
+
 @bot.event
 async def on_ready():
     print(f"Eingeloggt als {bot.user}")
