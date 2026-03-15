@@ -21,6 +21,7 @@ class MyBot(commands.Bot):
 
         print("Cogs geladen!")
 
+
         await self.tree.sync()
 bot = MyBot()
 
