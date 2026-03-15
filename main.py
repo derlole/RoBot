@@ -20,7 +20,6 @@ class MyBot(commands.Bot):
                 await self.load_extension(f"cogs.{filename[:-3]}")
 
         print("Cogs geladen!")
-
         await self.tree.sync()
 bot = MyBot()
 
